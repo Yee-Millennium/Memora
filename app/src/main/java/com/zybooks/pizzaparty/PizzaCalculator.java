@@ -35,6 +35,7 @@ public class PizzaCalculator {
 
     public int getTotalPizzas() {
         int slicesPerPerson;
+
         if (mHungerLevel == HungerLevel.LIGHT) {
             slicesPerPerson = 2;
         }
@@ -44,6 +45,7 @@ public class PizzaCalculator {
         else {
             slicesPerPerson = 4;
         }
+
         return (int) Math.ceil(mPartySize * slicesPerPerson / (double) SLICES_PER_PIZZA);
     }
 }

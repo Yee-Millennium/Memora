@@ -8,4 +8,9 @@
     <string name="total_pizzas">Total pizzas: ?</string>
     <string name="calculate_pizzas">Calculate</string>
     <string name="total_pizzas_num">Total pizzas: %d</string>
+    <string-array name="hunger_levels">
+        <item>Light</item>
+        <item>Medium</item>
+        <item>Ravenous</item>
+    </string-array>
 </resources>
