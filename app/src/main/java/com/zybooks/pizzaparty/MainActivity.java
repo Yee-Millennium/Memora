@@ -4,15 +4,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
-
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     public final int SLICES_PER_PIZZA = 8;
-
+    private final String KEY_TOTAL_PIZZAS = "totalPizzas";
+    private int mTotalPizzas;
     private EditText mNumAttendEditText;
     private TextView mNumPizzasTextView;
     private Spinner mHowHungrySpinner;
@@ -31,6 +31,26 @@ public class MainActivity extends AppCompatActivity {
                 R.array.hunger_levels, R.layout.spinner_list);
         adapter.setDropDownViewResource(R.layout.spinner_list);
         mHowHungrySpinner.setAdapter(adapter);
+
+        // Restore state
+        // if (savedInstanceState != null) {
+        //     mTotalPizzas = savedInstanceState.getInt(KEY_TOTAL_PIZZAS);
+        //     displayTotal();
+        // }
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(KEY_TOTAL_PIZZAS, mTotalPizzas);
+    }
+
+    // Restoring the pizzas total
+    @Override
+    public void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        mTotalPizzas = savedInstanceState.getInt(KEY_TOTAL_PIZZAS);
+        displayTotal();
     }
 
     public void calculateClick(View view) {
@@ -63,10 +83,13 @@ public class MainActivity extends AppCompatActivity {
 
         // Get the number of pizzas needed
         PizzaCalculator calc = new PizzaCalculator(numAttend, hungerLevel);
-        int totalPizzas = calc.getTotalPizzas();
+        mTotalPizzas = calc.getTotalPizzas();
+        displayTotal();
+    }
 
+    private void displayTotal() {
         // Place totalPizzas into the string resource and display
-        String totalText = getString(R.string.total_pizzas_num, totalPizzas);
+        String totalText = getString(R.string.total_pizzas_num, mTotalPizzas);
         mNumPizzasTextView.setText(totalText);
     }
 }
