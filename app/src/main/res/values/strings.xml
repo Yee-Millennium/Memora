@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Lights Out</string>
+    <string name="new_game">New Game</string>
+    <string name="congrats">Congratulations!</string>
+    <string name="congrats_cheat">Congratulations on cheating to win!</string>
+    <string name="light_on">on</string>
+    <string name="light_off">off</string>
 </resources>
