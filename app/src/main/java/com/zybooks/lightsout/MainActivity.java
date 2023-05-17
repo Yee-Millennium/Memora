@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         cheatButton.setLongClickable(true);
         cheatButton.setOnLongClickListener(v -> {
             // long click
-            mGame.cheatMode(this);
+            cheatMode();
             return true;
         });
 
@@ -82,6 +82,15 @@ public class MainActivity extends AppCompatActivity {
                 gridButton.setContentDescription(getString(R.string.light_off));
             }
         }
+    }
+
+    private void cheatMode() {
+        for (int buttonIndex = 0; buttonIndex < mLightGrid.getChildCount(); buttonIndex++) {
+            Button gridButton = (Button) mLightGrid.getChildAt(buttonIndex);
+            gridButton.setBackgroundColor(mLightOffColor);
+            gridButton.setContentDescription(getString(R.string.light_off));
+        }
+        mGame.cheatMode(this);
     }
 
     public void onNewGameClick(View view) {
