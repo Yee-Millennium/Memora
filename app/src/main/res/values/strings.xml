@@ -11,4 +11,8 @@
     <!-- Help Activity -->
     <string name="help_instructions">Turn off all the lights to win!</string>
     <string name="light_bulb">Light bulb</string>
+
+    <!-- Color Activity -->
+    <string name="color_button">Change Color</string>
+    <string name="choose_color">Choose a color:</string>
 </resources>
