@@ -56,7 +56,6 @@ public class LightsOutGame {
     }
 
     public void cheatMode(Context activity) {
-
         Toast.makeText(activity, R.string.congrats_cheat, Toast.LENGTH_SHORT).show();
     }
 }
