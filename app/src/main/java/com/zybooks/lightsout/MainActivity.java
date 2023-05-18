@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString(GAME_STATE, mGame.getState());
-        outState.putInt(LIGHT_ON_COLOR, mLightOffColor);
+        outState.putInt(LIGHT_ON_COLOR, mLightOnColor);
         outState.putInt(LIGHT_ON_COLOR_ID, mLightOnColorId);
     }
 
