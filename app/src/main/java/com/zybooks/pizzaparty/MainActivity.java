@@ -32,11 +32,11 @@ public class MainActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(R.layout.spinner_list);
         mHowHungrySpinner.setAdapter(adapter);
 
-        // Restore state
-        // if (savedInstanceState != null) {
-        //     mTotalPizzas = savedInstanceState.getInt(KEY_TOTAL_PIZZAS);
-        //     displayTotal();
-        // }
+         // Restore state
+         if (savedInstanceState != null) {
+             mTotalPizzas = savedInstanceState.getInt(KEY_TOTAL_PIZZAS);
+             displayTotal();
+         }
     }
 
     @Override
