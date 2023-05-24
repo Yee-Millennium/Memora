@@ -12,6 +12,11 @@
         android:icon="@drawable/roll"
         app:showAsAction="ifRoom"/>
 
+    <item android:id="@+id/action_roll_length"
+        android:title="@string/action_roll"
+        android:icon="@drawable/timer"
+        app:showAsAction="ifRoom"/>
+
     <item android:id="@+id/action_one"
         android:title="@string/action_one"
         app:showAsAction="never"/>

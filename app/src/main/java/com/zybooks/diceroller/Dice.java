@@ -4,12 +4,12 @@ import java.util.Random;
 
 public class Dice {
 
-    public static int LARGEST_NUM = 6;
-    public static int SMALLEST_NUM = 1;
+    public static final int LARGEST_NUM = 6;
+    public static final int SMALLEST_NUM = 1;
 
     private int mNumber = SMALLEST_NUM;
     private int mImageId;
-    private Random mRandomGenerator;
+    private final Random mRandomGenerator;
 
     public Dice(int number) {
         setNumber(number);
