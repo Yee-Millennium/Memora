@@ -6,7 +6,7 @@ public class LightsOutGame {
     public static final int GRID_SIZE = 3;
 
     // Lights that make up the grid
-    private boolean[][] mLightsGrid;
+    private final boolean[][] mLightsGrid;
 
     public LightsOutGame() {
         mLightsGrid = new boolean[GRID_SIZE][GRID_SIZE];
