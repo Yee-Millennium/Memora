@@ -14,7 +14,11 @@ import androidx.core.content.ContextCompat;
 public class MainActivity extends AppCompatActivity implements RollLengthDialogFragment.OnRollLengthSelectedListener {
 
     public static final int MAX_DICE = 3;
-
+    private final String TIMER_LENGTH_STATE = "timerLengthState";
+    private final String DICE_VISIBLE_STATE = "diceVisibleState";
+    private final String DICE_ONE_STATE = "diceOneState";
+    private final String DICE_TWO_STATE = "diceTwoState";
+    private final String DICE_THREE_STATE = "diceThreeState";
     private int mVisibleDice;
     private Dice[] mDice;
     private ImageView[] mDiceImageViews;
@@ -42,7 +46,40 @@ public class MainActivity extends AppCompatActivity implements RollLengthDialogF
         // All dice are initially visible
         mVisibleDice = MAX_DICE;
 
-        showDice();
+        if (savedInstanceState == null) {
+            showDice();
+        }
+        else {
+            mTimerLength = savedInstanceState.getLong(TIMER_LENGTH_STATE);
+
+            mVisibleDice = savedInstanceState.getInt(DICE_VISIBLE_STATE);
+            changeDiceVisibility(mVisibleDice);
+
+            int diceOneState = savedInstanceState.getInt(DICE_ONE_STATE);
+            int diceTwoState = savedInstanceState.getInt(DICE_TWO_STATE);
+            int diceThreeState = savedInstanceState.getInt(DICE_THREE_STATE);
+            if ( mVisibleDice == 1) {
+                mDice[0].setNumber(diceOneState);
+            } else if (mVisibleDice == 2) {
+                mDice[0].setNumber(diceOneState);
+                mDice[1].setNumber(diceTwoState);
+            } else if (mVisibleDice == 3) {
+                mDice[0].setNumber(diceOneState);
+                mDice[1].setNumber(diceTwoState);
+                mDice[2].setNumber(diceThreeState);
+            }
+            showDice();
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putLong(TIMER_LENGTH_STATE, mTimerLength);
+        outState.putInt(DICE_VISIBLE_STATE, mVisibleDice);
+        outState.putInt(DICE_ONE_STATE, mDice[0].getNumber());
+        outState.putInt(DICE_TWO_STATE, mDice[1].getNumber());
+        outState.putInt(DICE_THREE_STATE, mDice[2].getNumber());
     }
 
     @Override
@@ -84,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements RollLengthDialogF
         else if (item.getItemId() == R.id.action_stop) {
             mTimer.cancel();
             item.setVisible(false);
+            mMenu.findItem(R.id.action_roll).setVisible(true);
 
             return true;
         }
@@ -127,6 +165,7 @@ public class MainActivity extends AppCompatActivity implements RollLengthDialogF
 
     private void rollDice() {
         mMenu.findItem(R.id.action_stop).setVisible(true);
+        mMenu.findItem(R.id.action_roll).setVisible(false);
 
         if (mTimer != null) {
             mTimer.cancel();
@@ -138,10 +177,11 @@ public class MainActivity extends AppCompatActivity implements RollLengthDialogF
                     mDice[i].roll();
                 }
                 showDice();
-            }
+        }
 
             public void onFinish() {
                 mMenu.findItem(R.id.action_stop).setVisible(false);
+                mMenu.findItem(R.id.action_roll).setVisible(true);
             }
         }.start();
     }
