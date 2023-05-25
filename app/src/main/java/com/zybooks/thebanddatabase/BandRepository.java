@@ -8,7 +8,7 @@ import java.util.List;
 public class BandRepository {
 
     private static BandRepository instance;
-    private List<Band> mBands;
+    private final List<Band> mBands;
 
     public static BandRepository getInstance(Context context) {
         if (instance == null) {
