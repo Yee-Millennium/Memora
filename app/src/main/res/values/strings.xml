@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">The Band Database</string>
+    <string name="details">Details</string>
+
+    <string-array name="bands">
+        <item>The Beatles</item>
+        <item>Nirvana</item>
+        <item>U2</item>
+        <item>The Used</item>
+        <item>Rammstein</item>
+        <item>My Chemical Romance</item>
+        <item>The Offspring</item>
+        <item>Mindless Self Indulgence</item>
+        <item>Static-X</item>
+        <item>Rob Zombie</item>
+        <item>Depeche Mode</item>
+        <item>Panic! At The Disco</item>
+        <item>Say Anything</item>
+    </string-array>
+
+    <string-array name="descriptions">
+        <item>An English rock band that formed in Liverpool in 1960.</item>
+        <item>An American rock band that formed in Washington in 1987.</item>
+        <item>An Irish rock band from Dublin that formed in 1976.</item>
+        <item>An  American rock band that plays a mix of emo, screamo, post-hardcore and alternative rock.  They are known for their raw and emotional lyrics, their energetic live shows, and their longevity in the music scene since 2000</item>
+        <item>A German industrial metal band that was formed in Berlin in 1994.  They are known for their provocative lyrics, their spectacular pyrotechnic shows, and their distinctive musical style that combines heavy guitars, electronic beats, and operatic vocals.</item>
+        <item>An American alternative rock band that was formed in Newark, New Jersey in 2001 by Gerard Way and his brother Mikey Way.  They are known for their dark and theatrical concept albums, their influential role in the emo scene, and their passionate fanbase.  They broke up in 2013, but reunited in 2019.</item>
+        <item>An American punk rock band that was formed in Garden Grove, California in 1984 by Dexter Holland and Noodles.  They are known for their catchy and energetic songs, their influence on the skate punk and pop-punk scenes, and their long and successful career.  They have released ten studio albums and have sold over 40 million records worldwide.</item>
+        <item>An American electropunk band formed in New York City in 1997 with a mixed style which includes punk rock, alternative rock, electronica, techno, industrial, hip hop, and breakbeat hardcore.</item>
+        <item>An American heavy metal band from Los Angeles, California, formed in 1994 with a fluctuating line-up but was long-held constant with band founder, frontman, vocalist and rhythm guitarist Wayne Static until his death in 2014.</item>
+        <item>An American singer, songwriter, record producer, filmmaker, and voice actor.  He is known for his horror-themed music and films.  His music is a mix of heavy metal and industrial rock with lyrics that often reference horror movies and other dark themes.  He has released seven studio albums as a solo artist and two with his former band White Zombie.  His first solo album, “Hellbilly Deluxe,” was released in 1998 and was certified triple platinum in the United States.</item>
+        <item>An English electronic band formed in Basildon in 19801 with a distinctive sound that is dark and electronic but velvety smooth, soulful, and hard-rocking when it isn’t danceable.</item>
+        <item>An American rock band that originated in Las Vegas, Nevada, in 2004 by four childhood friends.  The band’s style has changed from emo/pop-punk to pop-oriented rock over the years.  Their debut album, A Fever You Can’t Sweat Out, was released in 2005 and featured the hit single “I Write Sins Not Tragedies”.</item>
+        <item>An American rock band from Los Angeles, California, founded by singer-songwriter Max Bemis.  The band was formed in 2000 and is the work of Max Bemis.  Max, being the main creative input, plays all the instruments (except drums) on the album, but has a live band line-up.</item>
+    </string-array>
+</resources>
