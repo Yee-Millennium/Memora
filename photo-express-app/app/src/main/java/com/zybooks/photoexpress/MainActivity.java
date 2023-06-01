@@ -33,6 +33,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+@SuppressWarnings("deprecation")
 public class MainActivity extends AppCompatActivity {
 
     private final int REQUEST_EXTERNAL_WRITE_PERMISSIONS = 0;
@@ -124,13 +125,9 @@ public class MainActivity extends AppCompatActivity {
 
             // Create the File where the photo should go
             File photoFile = null;
-            try {
-                photoFile = createImageFile();
-                mPhotoPath = photoFile.getAbsolutePath();
-            } catch (IOException ex) {
-                // Error occurred while creating the File
-                ex.printStackTrace();
-            }
+            photoFile = createImageFile();
+            mPhotoPath = photoFile.getAbsolutePath();
+
 
             // If the File was successfully created, start camera app
             if (photoFile != null) {
@@ -150,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private File createImageFile() throws IOException {
+    private File createImageFile() {
         // Create a unique filename
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(new Date());
         String imageFilename = "photo_" + timeStamp + ".jpg";
