@@ -8,11 +8,17 @@ import androidx.room.Room;
 import com.zybooks.studyhelper.model.Question;
 import com.zybooks.studyhelper.model.Subject;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import androidx.annotation.NonNull;
+import androidx.room.RoomDatabase;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 public class StudyRepository {
     public MutableLiveData<String> importedSubject = new MutableLiveData<>();
     public MutableLiveData<List<Subject>> fetchedSubjectList = new MutableLiveData<>();
-
+    private static final int NUMBER_OF_THREADS = 4;
+    private static final ExecutorService mDatabaseExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
     private final StudyFetcher mStudyFetcher;
     private static StudyRepository mStudyRepo;
     private final SubjectDao mSubjectDao;
@@ -26,8 +32,16 @@ public class StudyRepository {
     }
 
     private StudyRepository(Context context) {
+        RoomDatabase.Callback databaseCallback = new RoomDatabase.Callback() {
+            @Override
+            public void onCreate(@NonNull SupportSQLiteDatabase db) {
+                super.onCreate(db);
+                mDatabaseExecutor.execute(() -> addStarterData());
+            }
+        };
+
         StudyDatabase database = Room.databaseBuilder(context, StudyDatabase.class, "study.db")
-                .allowMainThreadQueries()
+                .addCallback(databaseCallback)
                 .build();
 
         mStudyFetcher = new StudyFetcher(context);
@@ -68,11 +82,6 @@ public class StudyRepository {
         mSubjectDao.addSubject(subject);
     }
 
-    public void addSubject(Subject subject) {
-        long subjectId = mSubjectDao.addSubject(subject);
-        subject.setId(subjectId);
-    }
-
     public Subject getSubject(long subjectId) {
         return mSubjectDao.getSubject(subjectId);
     }
@@ -81,8 +90,17 @@ public class StudyRepository {
         return mSubjectDao.getSubjects();
     }
 
+    public void addSubject(Subject subject) {
+        mDatabaseExecutor.execute(() -> {
+            long subjectId = mSubjectDao.addSubject(subject);
+            subject.setId(subjectId);
+        });
+    }
+
     public void deleteSubject(Subject subject) {
-        mSubjectDao.deleteSubject(subject);
+        mDatabaseExecutor.execute(() -> {
+            mSubjectDao.deleteSubject(subject);
+        });
     }
 
     public LiveData<Question> getQuestion(long questionId) {
@@ -94,16 +112,22 @@ public class StudyRepository {
     }
 
     public void addQuestion(Question question) {
-        long questionId = mQuestionDao.addQuestion(question);
-        question.setId(questionId);
+        mDatabaseExecutor.execute(() -> {
+            long questionId = mQuestionDao.addQuestion(question);
+            question.setId(questionId);
+        });
     }
 
     public void updateQuestion(Question question) {
-        mQuestionDao.updateQuestion(question);
+        mDatabaseExecutor.execute(() -> {
+            mQuestionDao.updateQuestion(question);
+        });
     }
 
     public void deleteQuestion(Question question) {
-        mQuestionDao.deleteQuestion(question);
+        mDatabaseExecutor.execute(() -> {
+            mQuestionDao.deleteQuestion(question);
+        });
     }
 
     public void fetchSubjects() {
