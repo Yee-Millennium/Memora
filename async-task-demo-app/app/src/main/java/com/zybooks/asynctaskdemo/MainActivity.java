@@ -27,18 +27,6 @@ public class MainActivity extends AppCompatActivity {
         task.execute("https://google.com/", "https://wikipedia.org/", "http://mit.edu/");
     }
 
-    private boolean downloadUrl(String url) {
-        try {
-            // Put thread to sleep for one second
-            Thread.sleep(1000);
-        }
-        catch (InterruptedException e) {
-            // Ignore
-        }
-
-        return true;
-    }
-
     private static class DownloadUrlsTask extends AsyncTask<String, Integer, Integer> {
 
         private final WeakReference<MainActivity> mActivity;

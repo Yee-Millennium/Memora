@@ -26,7 +26,6 @@ public class TimerWorker extends Worker {
     @NonNull
     @Override
     public Result doWork() {
-
         // Get remaining milliseconds from MainActivity
         Data inputData = getInputData();
         long remainingMillis = inputData.getLong(KEY_MILLISECONDS_REMAINING, 0);
@@ -67,16 +66,14 @@ public class TimerWorker extends Worker {
     }
 
     private void createTimerNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = getApplicationContext().getString(R.string.channel_name);
-            String description = getApplicationContext().getString(R.string.channel_description);
-            int importance = NotificationManager.IMPORTANCE_LOW;
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID_TIMER, name, importance);
-            channel.setDescription(description);
+        CharSequence name = getApplicationContext().getString(R.string.channel_name);
+        String description = getApplicationContext().getString(R.string.channel_description);
+        int importance = NotificationManager.IMPORTANCE_LOW;
+        NotificationChannel channel = new NotificationChannel(CHANNEL_ID_TIMER, name, importance);
+        channel.setDescription(description);
 
-            // Register channel with system
-            mNotificationManager.createNotificationChannel(channel);
-        }
+        // Register channel with system
+        mNotificationManager.createNotificationChannel(channel);
     }
 
     private void createTimerNotification(String text) {
