@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
-    tools:context="com.zybooks.studyhelper.ImportActivity">
+    tools:context="com.cs407.memora.ImportActivity">
 
     <TextView
         android:id="@+id/select_subject_text_view"

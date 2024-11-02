@@ -19,7 +19,8 @@ interface SubjectDao {
     @Query("SELECT * FROM Subject ORDER BY text COLLATE NOCASE")
     fun getSubjects(): LiveData<List<Subject>>
 
-    @Insert(onConflict = OnConflictStrategy
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun addSubject(subject: Subject): Long
 
     @Update
     fun updateSubject(subject: Subject)

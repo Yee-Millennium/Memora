@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id 'kotlin-kapt'
+    id("kotlin-kapt")
 }
 
 android {
@@ -43,10 +43,12 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.room.common)
+    implementation(libs.volley)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation 'androidx.room:room-runtime:2.4.0'
-    annotationProcessor 'androidx.room:room-compiler:2.4.0'
-    kapt 'androidx.room:room-compiler:2.4.0'
+    implementation("androidx.room:room-runtime:2.4.0")
+    annotationProcessor("androidx.room:room-compiler:2.4.0")
+    kapt("androidx.room:room-compiler:2.4.0")
 }

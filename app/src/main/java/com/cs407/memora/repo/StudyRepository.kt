@@ -13,22 +13,6 @@ class StudyRepository private constructor(context: Context) {
     var fetchedSubjectList = MutableLiveData<List<Subject>>()
 
     private val studyFetcher: StudyFetcher = StudyFetcher(context.applicationContext)
-
-    companion object {
-        private var instance: StudyRepository? = null
-
-        fun getSubject(subjectId: Long): LiveData<Subject?> = subjectDao.getSubject(subjectId)
-
-        fun getSubjects(): LiveData<List<Subject>> = subjectDao.getSubjects()
-
-        fun getInstance(context: Context): StudyRepository {
-            if (instance == null) {
-                instance = StudyRepository(context)
-            }
-            return instance!!
-        }
-    }
-
     private val database : StudyDatabase = Room.databaseBuilder(
         context.applicationContext,
         StudyDatabase::class.java,
@@ -36,14 +20,19 @@ class StudyRepository private constructor(context: Context) {
     )
         .allowMainThreadQueries()
         .build()
-
     private val subjectDao = database.subjectDao()
     private val questionDao = database.questionDao()
 
-    init {
-        if (subjectDao.getSubjects().isEmpty()) {
-            addStarterData()
+    companion object {
+        private var instance: StudyRepository? = null
+    }
+
+
+    fun getInstance(context: Context): StudyRepository {
+        if (instance == null) {
+            instance = StudyRepository(context)
         }
+        return instance!!
     }
 
     fun fetchSubjects() = studyFetcher.fetchSubjects(fetchListener)
@@ -69,9 +58,9 @@ class StudyRepository private constructor(context: Context) {
         }
     }
 
-    fun getSubject(subjectId: Long): Subject? = subjectDao.getSubject(subjectId)
+    fun getSubject(subjectId: Long): LiveData<Subject?> = subjectDao.getSubject(subjectId)
 
-    fun getSubjects(): List<Subject> = subjectDao.getSubjects()
+    fun getSubjects(): LiveData<List<Subject>> = subjectDao.getSubjects()
 
     fun addSubject(subject: Subject) {
         subject.id = subjectDao.addSubject(subject)
