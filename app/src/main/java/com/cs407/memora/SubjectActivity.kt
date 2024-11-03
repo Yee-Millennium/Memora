@@ -31,7 +31,7 @@ class SubjectActivity : AppCompatActivity(),
     private var subjectAdapter = SubjectAdapter(mutableListOf())
     private lateinit var subjectRecyclerView: RecyclerView
     private lateinit var subjectColors: IntArray
-    private lateinit var subjectListViewModel: SubjectListViewModel
+//    private lateinit var subjectListViewModel: SubjectListViewModel
     private val subjectListViewModel: SubjectListViewModel by lazy {
         ViewModelProvider(this).get(SubjectListViewModel::class.java)
     }
@@ -44,7 +44,7 @@ class SubjectActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_subject)
 
-        subjectListViewModel = SubjectListViewModel(application)
+//        subjectListViewModel = SubjectListViewModel(application)
 
         subjectColors = resources.getIntArray(R.array.subjectColors)
 
@@ -61,8 +61,8 @@ class SubjectActivity : AppCompatActivity(),
                 }
             })
 
-        // Show the subjects
-        updateUI(subjectListViewModel.getSubjects())
+//        // Show the subjects
+//        updateUI(subjectListViewModel.getSubjects())
 
     }
     private fun getSettingsSortOrder(): SubjectSortOrder {
@@ -96,9 +96,13 @@ class SubjectActivity : AppCompatActivity(),
         }
     }
 
+//    private fun addSubjectClick() {
+//        val dialog = SubjectDialogFragment()
+//        dialog.show(supportFragmentprivate inner class SubjectAdapter(private val subjectList: MutableList<Subject>) Manager, "subjectDialog")
+//    }
     private fun addSubjectClick() {
         val dialog = SubjectDialogFragment()
-        dialog.show(supportFragmentprivate inner class SubjectAdapter(private val subjectList: MutableList<Subject>) Manager, "subjectDialog")
+        dialog.show(supportFragmentManager, "subjectDialog")
     }
 
     private inner class SubjectHolder(inflater: LayoutInflater, parent: ViewGroup?) :
@@ -144,7 +148,7 @@ class SubjectActivity : AppCompatActivity(),
             }
 
             selectedSubject = subject!!
-            selectedSubjectPosition = absoluteAdapterPosition
+            selectedSubjectPosition = adapterPosition
 
             // Re-bind the selected item
             subjectAdapter.notifyItemChanged(selectedSubjectPosition)

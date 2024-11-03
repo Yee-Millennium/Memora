@@ -34,4 +34,5 @@ class SubjectListViewModel(application: Application) : AndroidViewModel(applicat
     fun addSubject(subject: Subject) = studyRepo.addSubject(subject)
 
     fun deleteSubject(subject: Subject) = studyRepo.deleteSubject(subject)
+//    fun getSubjects(subject: Subject) = studyRepo.getSubjects()
 }

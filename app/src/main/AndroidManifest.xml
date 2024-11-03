@@ -11,13 +11,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Memora"
+        android:theme="@style/Themes.Memora"
         tools:targetApi="31">
         <activity
-            android:name=".ImportActivity"<!-- 6.12 -->
-            android:label="@string/settings"<!-- 6.9 -->
-            android:parentActivityName=".SubjectActivity"<!-- 6.8 --><!-- 6.9 -->
-            android:exported="false"><!-- 6.8 -->
+            android:name=".ImportActivity"
+            android:label="@string/settings"
+            android:parentActivityName=".SubjectActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

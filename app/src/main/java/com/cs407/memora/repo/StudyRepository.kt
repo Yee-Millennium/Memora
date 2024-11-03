@@ -25,14 +25,12 @@ class StudyRepository private constructor(context: Context) {
 
     companion object {
         private var instance: StudyRepository? = null
-    }
-
-
-    fun getInstance(context: Context): StudyRepository {
-        if (instance == null) {
-            instance = StudyRepository(context)
+        fun getInstance(context: Context): StudyRepository {
+            if (instance == null) {
+                instance = StudyRepository(context)
+            }
+            return instance!!
         }
-        return instance!!
     }
 
     fun fetchSubjects() = studyFetcher.fetchSubjects(fetchListener)
