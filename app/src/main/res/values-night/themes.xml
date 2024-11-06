@@ -1,5 +1,5 @@
 <resources>
-    <style name="Theme.StudyHelper" parent="Theme.AppCompat.DayNight">
+    <style name="Theme.Memora" parent="Theme.AppCompat.DayNight">
         <item name="colorPrimary">@color/paleblue_900</item>
         <item name="colorPrimaryDark">@color/black</item>
         <item name="colorAccent">@color/blue_900</item>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Study Helper</string>
+    <string name="app_name">Memora</string>
     <string name="question_label">Q</string>
     <string name="question_hint">Question</string>
     <string name="answer_label">A</string>
