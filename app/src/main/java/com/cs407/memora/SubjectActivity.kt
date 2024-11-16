@@ -53,6 +53,7 @@ class SubjectActivity : AppCompatActivity(),
 
         subjectRecyclerView = findViewById(R.id.subject_recycler_view)
         subjectRecyclerView.layoutManager = GridLayoutManager(applicationContext, 2)
+        subjectRecyclerView.adapter = subjectAdapter
 
         subjectListViewModel.subjectListLiveData.observe(
             this, { subjectList ->
@@ -91,7 +92,6 @@ class SubjectActivity : AppCompatActivity(),
             subjectListViewModel.addSubject(subject)
             // Add subject to RecyclerView
             subjectAdapter.addSubject(subject)
-
             Toast.makeText(this, "Added $subjectText", Toast.LENGTH_SHORT).show()
         }
     }
@@ -273,6 +273,34 @@ class SubjectActivity : AppCompatActivity(),
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+//    override fun onResume() {
+//        super.onResume()
+//
+//        // Retrieve the sort order from the settings
+//        // getSettingsSortOrder() returns a SubjectSortOrder object
+//        val sortOrder = getSettingsSortOrder()
+//
+//        // Set the sort order in the ViewModel
+//       subjectListViewModel.setSortOrder(sortOrder)
+//    }
+
+    override fun onResume() {
+        super.onResume()
+
+        // Retrieve the sort order from the settings
+        val sortOrder = getSettingsSortOrder()
+
+        // Map com.cs407.memora.SubjectSortOrder to com.cs407.memora.viewmodel.SubjectSortOrder
+        val viewModelSortOrder = when (sortOrder) {
+            SubjectSortOrder.ALPHABETIC -> com.cs407.memora.viewmodel.SubjectSortOrder.ALPHABETIC
+            SubjectSortOrder.NEW_FIRST -> com.cs407.memora.viewmodel.SubjectSortOrder.NEW_FIRST
+            SubjectSortOrder.OLD_FIRST -> com.cs407.memora.viewmodel.SubjectSortOrder.OLD_FIRST
+        }
+
+        // Set the sort order in the ViewModel
+        subjectListViewModel.setSortOrder(viewModelSortOrder)
     }
 
 
