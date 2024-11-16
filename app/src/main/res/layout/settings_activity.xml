@@ -1,57 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="#2D2D2D"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/label_settings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Settings"
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
-        android:paddingBottom="16dp" />
+<!--        &lt;!&ndash; Toolbar &ndash;&gt;-->
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/settings_toolbar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="?attr/actionBarSize"-->
+<!--            android:background="?attr/colorPrimary"-->
+<!--            app:title="Settings"-->
+<!--            app:titleTextColor="@android:color/white" />-->
 
-<!--    <Switch-->
-<!--        android:id="@+id/switch_dark_theme"-->
+        <!-- Fragment Container -->
+        <FrameLayout
+            android:id="@+id/settings"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/label_settings"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Settings"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:paddingBottom="16dp" />-->
+
+<!--        <Switch-->
+<!--            android:id="@+id/switch_dark_theme"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Dark theme"-->
+<!--            android:textColor="#FFFFFF"-->
+<!--            android:checked="true" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/subject_order_title"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
-<!--        android:text="Dark theme"-->
+<!--        android:text="Subject order"-->
 <!--        android:textColor="#FFFFFF"-->
-<!--        android:checked="true" />-->
+<!--        android:paddingTop="16dp" />-->
 
-    <TextView
-        android:id="@+id/subject_order_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Subject order"
-        android:textColor="#FFFFFF"
-        android:paddingTop="16dp" />
+<!--    <TextView-->
+<!--        android:id="@+id/subject_order_value"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Alphabetic"-->
+<!--        android:textColor="#AAAAAA"-->
+<!--        android:paddingBottom="16dp" />-->
 
-    <TextView
-        android:id="@+id/subject_order_value"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Alphabetic"
-        android:textColor="#AAAAAA"
-        android:paddingBottom="16dp" />
+<!--    <TextView-->
+<!--        android:id="@+id/default_question_title"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Default question"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:paddingTop="8dp" />-->
 
-    <TextView
-        android:id="@+id/default_question_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Default question"
-        android:textColor="#FFFFFF"
-        android:paddingTop="8dp" />
-
-    <TextView
-        android:id="@+id/default_question_value"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Not set"
-        android:textColor="#AAAAAA" />
+<!--    <TextView-->
+<!--        android:id="@+id/default_question_value"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Not set"-->
+<!--        android:textColor="#AAAAAA" />-->
 
 </LinearLayout>
