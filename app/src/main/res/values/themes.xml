@@ -1,19 +1,19 @@
 <resources>
     <style name="Theme.Memora" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <item name="colorPrimary">@color/blue_800</item>
-        <item name="colorPrimaryDark">@color/blue_900</item>
-        <item name="colorAccent">@color/blue_400</item>
+        <item name="colorPrimary">@color/background</item>
+        <item name="colorPrimaryDark">@color/background</item>
+        <item name="colorAccent">@color/background</item>
     </style>
 
     <style name="CardLabel">
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/gray_200</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="QALabel">
         <item name="android:textSize">60sp</item>
-        <item name="android:textColor">@color/blue_900</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="QAEditText">

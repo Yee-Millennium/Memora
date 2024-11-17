@@ -4,6 +4,8 @@
     <color name="blue_900">#01579B</color>
     <color name="blue_400">#42A5F5</color>
 
+    <color name="background">#a5eeb1</color>
+
     <!-- dark theme -->
     <color name="paleblue_900">#023</color>
     <color name="black">#000</color>
@@ -13,15 +15,15 @@
     <color name="gray_700">#555</color>
 
     <array name="subjectColors">
-        <item>#1A237E</item>
-        <item>#880E4F</item>
-        <item>#006064</item>
-        <item>#F57F17</item>
-        <item>#BF360C</item>
-        <item>#01579B</item>
-        <item>#33691E</item>
-        <item>#4A148C</item>
-        <item>#B71C1C</item>
+        <item>#FFFFFF</item>  <!-- White (Center color) -->
+        <item>#F1F8E9</item>  <!-- Very Light Green -->
+        <item>#E8EAF6</item>  <!-- Very Light Blue (Soft Blue) -->
+        <item>#FCE4EC</item>  <!-- Very Light Pink (Soft Pink) -->
+        <item>#FFF3E0</item>  <!-- Very Light Yellow (Soft Yellow) -->
+        <item>#FFEBEE</item>  <!-- Very Light Red (Soft Red) -->
+        <item>#F1F8FF</item>  <!-- Very Light Sky Blue -->
+        <item>#F0F4C3</item>  <!-- Soft Olive Green -->
+        <item>#F3E5F5</item>
     </array>
 </resources>
 

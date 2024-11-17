@@ -20,6 +20,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.graphics.Color
 import androidx.preference.PreferenceManager
+import androidx.recyclerview.widget.LinearLayoutManager
 
 enum class SubjectSortOrder {
     ALPHABETIC, NEW_FIRST, OLD_FIRST
@@ -52,7 +53,7 @@ class SubjectActivity : AppCompatActivity(),
             addSubjectClick() }
 
         subjectRecyclerView = findViewById(R.id.subject_recycler_view)
-        subjectRecyclerView.layoutManager = GridLayoutManager(applicationContext, 2)
+        subjectRecyclerView.layoutManager = GridLayoutManager(applicationContext,2)
         subjectRecyclerView.adapter = subjectAdapter
 
         subjectListViewModel.subjectListLiveData.observe(
@@ -105,59 +106,116 @@ class SubjectActivity : AppCompatActivity(),
         dialog.show(supportFragmentManager, "subjectDialog")
     }
 
-    private inner class SubjectHolder(inflater: LayoutInflater, parent: ViewGroup?) :
-        RecyclerView.ViewHolder(inflater.inflate(R.layout.recycler_view_items, parent, false)),
-        View.OnLongClickListener,
-        View.OnClickListener {
+//    private inner class SubjectHolder(inflater: LayoutInflater, parent: ViewGroup?) :
+//        RecyclerView.ViewHolder(inflater.inflate(R.layout.recycler_view_items, parent, false)),
+//        View.OnLongClickListener,
+//        View.OnClickListener {
+//
+//        private var subject: Subject? = null
+//        private val subjectTextView: TextView
+//
+//        init {
+//            itemView.setOnClickListener(this)
+//            itemView.setOnLongClickListener(this)
+//            subjectTextView = itemView.findViewById(R.id.subject_text_view)
+//        }
+//
+//        fun bind(subject: Subject, position: Int) {
+//            this.subject = subject
+//            subjectTextView.text = subject.text
+//            if (selectedSubjectPosition == position) {
+//                // Make selected subject stand out
+//                subjectTextView.setBackgroundColor(Color.RED)
+//            }
+//            else {
+//               // Make the background color dependent on the length of the subject string
+//                val colorIndex = subject.text.length % subjectColors.size
+//                subjectTextView.setBackgroundColor(subjectColors[colorIndex])
+//            }
+//        }
+//
+//        override fun onClick(view: View) {
+//            // Start QuestionActivity with the selected subject
+//            val intent = Intent(this@SubjectActivity, QuestionActivity::class.java)
+//            intent.putExtra(QuestionActivity.EXTRA_SUBJECT_ID, subject!!.id)
+//            intent.putExtra(QuestionActivity.EXTRA_SUBJECT_TEXT, subject!!.text)
+//
+//            startActivity(intent)
+//        }
+//
+//        override fun onLongClick(view: View): Boolean {
+//            if (actionMode != null) {
+//                return false
+//            }
+//
+//            selectedSubject = subject!!
+//            selectedSubjectPosition = adapterPosition
+//
+//            // Re-bind the selected item
+//            subjectAdapter.notifyItemChanged(selectedSubjectPosition)
+//
+//            // Show the CAB
+//            actionMode = this@SubjectActivity.startActionMode(actionModeCallback)
+//            return true
+//        }
+//    }
+private inner class SubjectHolder(inflater: LayoutInflater, parent: ViewGroup?) :
+    RecyclerView.ViewHolder(inflater.inflate(R.layout.recycler_view_items, parent, false)),
+    View.OnLongClickListener,
+    View.OnClickListener {
 
-        private var subject: Subject? = null
-        private val subjectTextView: TextView
+    private var subject: Subject? = null
+    private val subjectTextView: TextView
 
-        init {
-            itemView.setOnClickListener(this)
-            itemView.setOnLongClickListener(this)
-            subjectTextView = itemView.findViewById(R.id.subject_text_view)
-        }
+    init {
+        itemView.setOnClickListener(this)
+        itemView.setOnLongClickListener(this)
+        subjectTextView = itemView.findViewById(R.id.subject_text_view)
+    }
 
-        fun bind(subject: Subject, position: Int) {
-            this.subject = subject
-            subjectTextView.text = subject.text
-            if (selectedSubjectPosition == position) {
-                // Make selected subject stand out
-                subjectTextView.setBackgroundColor(Color.RED)
-            }
-            else {
-               // Make the background color dependent on the length of the subject string
-                val colorIndex = subject.text.length % subjectColors.size
-                subjectTextView.setBackgroundColor(subjectColors[colorIndex])
-            }
-        }
+    fun bind(subject: Subject, position: Int) {
+        this.subject = subject
+        subjectTextView.text = subject.text
+        subjectTextView.setTextColor(Color.BLACK) // Set text color to black
 
-        override fun onClick(view: View) {
-            // Start QuestionActivity with the selected subject
-            val intent = Intent(this@SubjectActivity, QuestionActivity::class.java)
-            intent.putExtra(QuestionActivity.EXTRA_SUBJECT_ID, subject!!.id)
-            intent.putExtra(QuestionActivity.EXTRA_SUBJECT_TEXT, subject!!.text)
-
-            startActivity(intent)
-        }
-
-        override fun onLongClick(view: View): Boolean {
-            if (actionMode != null) {
-                return false
-            }
-
-            selectedSubject = subject!!
-            selectedSubjectPosition = adapterPosition
-
-            // Re-bind the selected item
-            subjectAdapter.notifyItemChanged(selectedSubjectPosition)
-
-            // Show the CAB
-            actionMode = this@SubjectActivity.startActionMode(actionModeCallback)
-            return true
+        // Set background color for the entire card, not the TextView
+        val cardView = itemView as androidx.cardview.widget.CardView
+        if (selectedSubjectPosition == position) {
+            // Make selected subject stand out
+            cardView.setCardBackgroundColor(Color.RED)
+        } else {
+            // Make the background color dependent on the length of the subject string
+            val colorIndex = subject.text.length % subjectColors.size
+            cardView.setCardBackgroundColor(subjectColors[colorIndex])
         }
     }
+
+
+    override fun onClick(view: View) {
+        // Start QuestionActivity with the selected subject
+        val intent = Intent(this@SubjectActivity, QuestionActivity::class.java)
+        intent.putExtra(QuestionActivity.EXTRA_SUBJECT_ID, subject!!.id)
+        intent.putExtra(QuestionActivity.EXTRA_SUBJECT_TEXT, subject!!.text)
+        startActivity(intent)
+    }
+
+    override fun onLongClick(view: View): Boolean {
+        if (actionMode != null) {
+            return false
+        }
+
+        selectedSubject = subject!!
+        selectedSubjectPosition = adapterPosition
+
+        // Re-bind the selected item
+        subjectAdapter.notifyItemChanged(selectedSubjectPosition)
+
+        // Show the CAB
+        actionMode = this@SubjectActivity.startActionMode(actionModeCallback)
+        return true
+    }
+}
+
 
     private val actionModeCallback = object : ActionMode.Callback {
 
