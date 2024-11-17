@@ -82,8 +82,8 @@
         <!-- 显示/隐藏答案按钮 -->
         <Button
             android:id="@+id/answer_button"
-            android:layout_width="123dp"
-            android:layout_height="48dp"
+            android:layout_width="163dp"
+            android:layout_height="50dp"
             android:layout_marginTop="16dp"
 
             android:text="@string/hide_answer"
