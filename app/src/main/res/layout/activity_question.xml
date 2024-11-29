@@ -93,6 +93,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/question_text_view" />
 
+        <Button
+            android:id="@+id/ask_ai_button"
+            android:layout_width="123dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:text="Ask AI"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/answer_button"
+            app:layout_constraintTop_toBottomOf="@id/question_text_view" />
+
         <!-- 答案标题 -->
         <TextView
             android:id="@+id/answer_label_text_view"

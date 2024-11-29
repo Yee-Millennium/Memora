@@ -69,6 +69,13 @@ class QuestionActivity : AppCompatActivity() {
             this.questionList = questionList
             updateUI()
         }
+
+        findViewById<Button>(R.id.ask_ai_button).setOnClickListener {
+            val questionText = questionTextView.text.toString()
+            val intent = Intent(this, ChatGptActivity::class.java)
+            intent.putExtra("QUESTION", questionText)
+            startActivity(intent)
+        }
     }
 
     private fun updateUI() {
