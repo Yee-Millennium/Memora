@@ -324,11 +324,11 @@ private inner class SubjectHolder(inflater: LayoutInflater, parent: ViewGroup?) 
             startActivity(intent)
             return true
         }
-        else if (item.itemId == R.id.import_questions) {
-            intent = Intent(this, ImportActivity::class.java)
-            startActivity(intent)
-            return true
-        }
+//        else if (item.itemId == R.id.import_questions) {
+//            intent = Intent(this, ImportActivity::class.java)
+//            startActivity(intent)
+//            return true
+//        }
 
         return super.onOptionsItemSelected(item)
     }
