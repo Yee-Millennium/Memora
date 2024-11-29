@@ -19,7 +19,7 @@ class QuestionEditActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val EXTRA_QUESTION_ID = "com.zybooks.studyhelper.question_id"
+        const val EXTRA_QUESTION_ID = "com.cs407.memora.studyhelper.question_id"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
