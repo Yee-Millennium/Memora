@@ -52,7 +52,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="177dp">
+            android:layout_height="543dp">
 
             <!-- 卡片标题 -->
 
@@ -92,7 +92,7 @@
                 android:id="@+id/answer_edit_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:background="@drawable/edit_text_background"
                 android:hint="Response"
                 android:padding="12dp"
