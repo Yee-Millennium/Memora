@@ -59,6 +59,11 @@ class ChatGptActivity : AppCompatActivity() {
             // Optionally auto-send the question
             sendQuestion(question)
         }
+
+        // Enable the back button in the action bar
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+
     }
 
     private fun sendQuestion(question: String) {
@@ -91,12 +96,18 @@ class ChatGptActivity : AppCompatActivity() {
                     loadingProgressBar.visibility = View.GONE
                     Snackbar.make(
                         findViewById(android.R.id.content),
-                        R.string.cancel,
+                        R.string.error,
                         Snackbar.LENGTH_LONG
                     ).show()
                 }
             }
         }
+    }
+
+    // Handle the back button click
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }
 

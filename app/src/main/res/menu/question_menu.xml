@@ -24,5 +24,3 @@
         android:title="@string/delete"
         app:showAsAction="never"/>
 </menu>
-
-    <!-- 6.4 -->

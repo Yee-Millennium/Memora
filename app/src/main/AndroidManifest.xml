@@ -55,7 +55,12 @@
         <activity
             android:name=".ChatGptActivity"
             android:exported="false"
-            android:label="Chat with AI">
+            android:label="Chat with AI"
+            android:parentActivityName=".QuestionActivity">
+            <!-- This enables up navigation -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".QuestionActivity" />
         </activity>
 
     </application>

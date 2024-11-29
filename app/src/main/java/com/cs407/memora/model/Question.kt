@@ -1,4 +1,3 @@
-//6.4, 6.5
 package com.cs407.memora.model
 
 import androidx.room.ColumnInfo
