@@ -5,13 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E8F8E3"
+    android:radius="30dp"
     tools:context="com.cs407.memora.SubjectActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/subject_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:radius="30dp"
         android:scrollbars="vertical" />
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_subject_button"
@@ -21,5 +24,6 @@
         android:layout_gravity="end|bottom"
         android:src="@drawable/add"
         android:layout_margin="16dp" />
+
 
 </FrameLayout>

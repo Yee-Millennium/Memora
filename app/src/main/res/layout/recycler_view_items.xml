@@ -4,15 +4,14 @@
     android:layout_height="75dp"
     android:layout_margin="5dp"
     android:background="@drawable/rounded_card_background"
-    android:elevation="4dp"
-    android:radius="30dp"
-    android:padding="4dp">
+    android:elevation="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+        android:radius="30dp">
 
     <!-- The Title TextView -->
     <TextView
@@ -20,10 +19,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:padding="8dp"
+        android:radius="30dp"
         android:background="@android:color/transparent"
-        android:gravity="center" /> <!-- Align text in the center -->
+        android:gravity="center" />
+        <Button
+            android:id="@+id/delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="@string/delete"
+            android:textColor="@android:color/black"
+            android:radius="20dp" />
 
 </LinearLayout>
 </androidx.cardview.widget.CardView>

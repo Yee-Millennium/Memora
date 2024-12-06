@@ -19,6 +19,7 @@ import android.view.ActionMode
 import android.view.Menu
 import android.view.MenuItem
 import android.graphics.Color
+import android.widget.Button
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 
@@ -53,7 +54,8 @@ class SubjectActivity : AppCompatActivity(),
             addSubjectClick() }
 
         subjectRecyclerView = findViewById(R.id.subject_recycler_view)
-        subjectRecyclerView.layoutManager = GridLayoutManager(applicationContext,2)
+        subjectRecyclerView.layoutManager = LinearLayoutManager(this)
+//        subjectRecyclerView.layoutManager = GridLayoutManager(applicationContext,2)
         subjectRecyclerView.adapter = subjectAdapter
 
         subjectListViewModel.subjectListLiveData.observe(
@@ -166,10 +168,17 @@ private inner class SubjectHolder(inflater: LayoutInflater, parent: ViewGroup?) 
 
     private var subject: Subject? = null
     private val subjectTextView: TextView
+    private val deleteButton: Button = itemView.findViewById(R.id.delete_button)
+
 
     init {
         itemView.setOnClickListener(this)
         itemView.setOnLongClickListener(this)
+        deleteButton.setOnClickListener {
+            subject?.let { subject ->
+                subjectAdapter.deleteSubject(subject)
+            }
+        }
         subjectTextView = itemView.findViewById(R.id.subject_text_view)
     }
 
@@ -264,6 +273,16 @@ private inner class SubjectHolder(inflater: LayoutInflater, parent: ViewGroup?) 
 
     private inner class SubjectAdapter(private val subjectList: MutableList<Subject>) :
         RecyclerView.Adapter<SubjectHolder>() {
+
+        fun deleteSubject(subject: Subject) {
+            val position = subjectList.indexOf(subject)
+            if (position >= 0) {
+                subjectList.removeAt(position)
+                notifyItemRemoved(position)
+                // 从 ViewModel 删除数据
+                subjectListViewModel.deleteSubject(subject)
+            }
+        }
 
         var sortOrder: SubjectSortOrder = SubjectSortOrder.ALPHABETIC
             set(value) {
