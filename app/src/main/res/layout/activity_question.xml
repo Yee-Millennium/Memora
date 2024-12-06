@@ -34,7 +34,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/add_question"
-
             android:textColor="#000000"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/no_question_label_text_view"
@@ -43,115 +42,125 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- 显示问题的布局 -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/show_question_layout"
+    <!-- 卡片式布局 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/question_card"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        tools:context="com.cs407.memora.QuestionActivity">
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp">
 
-        <!-- 问题标题 -->
-        <TextView
-            android:id="@+id/question_label_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/question_label"
-            android:textSize="40sp"
-            android:textStyle="bold"
-            android:textColor="#000000"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/show_question_layout"
+            android:layout_width="match_parent"
+            android:layout_height="690dp"
+            tools:context="com.cs407.memora.QuestionActivity">
 
-        <!-- 问题文本 -->
-        <TextView
-            android:id="@+id/question_text_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:hint="Question goes here..."
-            android:textSize="30sp"
-            android:textColor="#000000"
-            android:gravity="center_vertical"
-            app:layout_constraintTop_toBottomOf="@id/question_label_text_view"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            <!-- 问题标题 -->
 
-        <!-- 显示/隐藏答案按钮 -->
-        <Button
-            android:id="@+id/answer_button"
-            android:layout_width="123dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="16dp"
+            <!-- 问题文本 -->
+            <TextView
+                android:id="@+id/question_label_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/question_label"
+                android:textColor="#000000"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            android:text="@string/hide_answer"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/question_text_view" />
+            <TextView
+                android:id="@+id/question_text_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:gravity="center_vertical"
+                android:hint="Type your question here."
+                android:textColor="#000000"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/question_label_text_view" />
 
-        <Button
-            android:id="@+id/ask_ai_button"
-            android:layout_width="123dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="16dp"
-            android:text="Ask AI"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/answer_button"
-            app:layout_constraintTop_toBottomOf="@id/question_text_view" />
+            <!-- 显示/隐藏答案按钮 -->
+            <Button
+                android:id="@+id/answer_button"
+                android:layout_width="123dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#E8F8E3"
+                android:text="@string/hide_answer"
+                android:textColor="#0F0000"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.117"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/question_text_view" />
 
-        <!-- 答案标题 -->
-        <TextView
-            android:id="@+id/answer_label_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/answer_label"
-            android:textSize="40sp"
-            android:textStyle="bold"
-            android:textColor="#000000"
-            app:layout_constraintTop_toBottomOf="@id/answer_button"
-            app:layout_constraintStart_toStartOf="parent" />
+            <!-- 答案标题 -->
+            <Button
+                android:id="@+id/ask_ai_button"
+                android:layout_width="123dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#E8F8E3"
+                android:text="Ask AI"
+                android:textColor="#070000"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.611"
+                app:layout_constraintStart_toEndOf="@id/answer_button"
+                app:layout_constraintTop_toBottomOf="@id/question_text_view" />
 
-        <!-- 答案文本 -->
-        <TextView
-            android:id="@+id/answer_text_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:hint="Answer goes here..."
-            android:textSize="30sp"
-            android:textColor="#000000"
-            android:gravity="center_vertical"
-            app:layout_constraintTop_toBottomOf="@id/answer_label_text_view"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            <!-- 答案标题 -->
+            <TextView
+                android:id="@+id/answer_label_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="80dp"
+                android:text="@string/answer_label"
+                android:textColor="#000000"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/answer_button" />
 
+            <!-- 答案文本 -->
+            <TextView
+                android:id="@+id/answer_text_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Type your answer here."
+                android:textColor="#000000"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/answer_label_text_view" />
 
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginBottom="28dp"
+                android:src="@drawable/memora_logo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.046"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/memora_logo"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.972"
-            android:clickable="true"
-            android:focusable="true"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- 底部 Logo -->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 
