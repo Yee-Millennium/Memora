@@ -53,7 +53,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/show_question_layout"
-            android:layout_width="match_parent"
+            android:layout_width="355dp"
             android:layout_height="690dp"
             tools:context="com.cs407.memora.QuestionActivity">
 
@@ -75,13 +75,13 @@
 
             <TextView
                 android:id="@+id/question_text_view"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="335dp"
+                android:layout_height="60dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:gravity="center_vertical"
-                android:hint="Type your question here..."
+                android:hint="Type your question here."
                 android:textColor="#000000"
                 android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -119,12 +119,15 @@
                 app:layout_constraintTop_toBottomOf="@id/question_text_view" />
 
             <!-- 答案标题 -->
+
+            <!-- 答案文本 -->
+
             <TextView
                 android:id="@+id/answer_label_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="80dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="64dp"
                 android:text="@string/answer_label"
                 android:textColor="#000000"
                 android:textSize="40sp"
@@ -132,16 +135,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/answer_button" />
 
-            <!-- 答案文本 -->
             <TextView
                 android:id="@+id/answer_text_view"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:hint="Type your answer here..."
+                android:layout_width="337dp"
+                android:layout_height="67dp"
+                android:layout_marginTop="36dp"
+                android:hint="Type your answer here."
                 android:textColor="#000000"
                 android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.487"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/answer_label_text_view" />
 
