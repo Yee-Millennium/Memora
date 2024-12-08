@@ -17,21 +17,6 @@ class SubjectDialogFragment: DialogFragment() {
 
     private lateinit var listener: OnSubjectEnteredListener
 
-//    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-//        val subjectEditText = EditText(requireActivity())
-//        subjectEditText.inputType = InputType.TYPE_CLASS_TEXT
-//        subjectEditText.maxLines = 1
-//        return AlertDialog.Builder(requireActivity())
-//            .setTitle(R.string.subject)
-//            .setView(subjectEditText)
-//            .setPositiveButton(R.string.create) { dialog, whichButton ->
-//                // Notify listener
-//                val subject = subjectEditText.text.toString()
-//                listener.onSubjectEntered(subject.trim())
-//            }
-//            .setNegativeButton(R.string.cancel, null)
-//            .create()
-//    }
 override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
     val view = requireActivity().layoutInflater.inflate(R.layout.dialog_subject, null)
     val subjectEditText = view.findViewById<EditText>(R.id.subject_edit_text)
@@ -46,21 +31,6 @@ override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         .setNegativeButton(R.string.cancel, null)
         .create()
 }
-//override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-//    val view = requireActivity().layoutInflater.inflate(R.layout.dialog_subject, null)
-//    val subjectEditText = view.findViewById<EditText>(R.id.subject_edit_text)
-//
-//    return AlertDialog.Builder(requireActivity(), R.style.CustomAlertDialogTheme)
-//        .setView(view) // 使用自定义布局
-//        .setPositiveButton(R.string.create) { dialog, whichButton ->
-//            val subject = subjectEditText.text.toString()
-//            listener.onSubjectEntered(subject.trim())
-//        }
-//        .setNegativeButton(R.string.cancel, null)
-//        .create()
-//}
-
-
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

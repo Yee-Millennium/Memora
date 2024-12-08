@@ -1,5 +1,4 @@
 package com.cs407.memora
-// 6.4.18
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -20,7 +19,6 @@ import com.google.android.material.snackbar.Snackbar
 
 class QuestionActivity : AppCompatActivity() {
 
-//    private lateinit var questionListViewModel: QuestionListViewModel
     private lateinit var subject: Subject
     private lateinit var questionList: List<Question>
     private lateinit var answerLabelTextView: TextView
@@ -31,6 +29,7 @@ class QuestionActivity : AppCompatActivity() {
     private lateinit var noQuestionLayout: ViewGroup
     private var currentQuestionIndex = 0
     private lateinit var deletedQuestion: Question
+    private lateinit var quoteTextView: TextView
 
     companion object {
         const val EXTRA_SUBJECT_ID = "com.cs407.memora.subject_id"
@@ -51,6 +50,11 @@ class QuestionActivity : AppCompatActivity() {
         answerButton = findViewById(R.id.answer_button)
         showQuestionLayout = findViewById(R.id.show_question_layout)
         noQuestionLayout = findViewById(R.id.no_question_layout)
+
+        quoteTextView = findViewById(R.id.motivation_quote)
+        val quotes = resources.getStringArray(R.array.motivation_quotes)
+        val randomQuote = quotes.random()  // Kotlin's built-in random() function
+        quoteTextView.text = randomQuote
 
         // Add click callbacks
         answerButton.setOnClickListener { toggleAnswerVisibility() }

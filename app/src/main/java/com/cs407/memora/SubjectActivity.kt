@@ -65,9 +65,6 @@ class SubjectActivity : AppCompatActivity(),
                 }
             })
 
-//        // Show the subjects
-//        updateUI(subjectListViewModel.getSubjects())
-
     }
     private fun getSettingsSortOrder(): SubjectSortOrder {
 
@@ -99,68 +96,11 @@ class SubjectActivity : AppCompatActivity(),
         }
     }
 
-//    private fun addSubjectClick() {
-//        val dialog = SubjectDialogFragment()
-//        dialog.show(supportFragmentprivate inner class SubjectAdapter(private val subjectList: MutableList<Subject>) Manager, "subjectDialog")
-//    }
     private fun addSubjectClick() {
         val dialog = SubjectDialogFragment()
         dialog.show(supportFragmentManager, "subjectDialog")
     }
 
-//    private inner class SubjectHolder(inflater: LayoutInflater, parent: ViewGroup?) :
-//        RecyclerView.ViewHolder(inflater.inflate(R.layout.recycler_view_items, parent, false)),
-//        View.OnLongClickListener,
-//        View.OnClickListener {
-//
-//        private var subject: Subject? = null
-//        private val subjectTextView: TextView
-//
-//        init {
-//            itemView.setOnClickListener(this)
-//            itemView.setOnLongClickListener(this)
-//            subjectTextView = itemView.findViewById(R.id.subject_text_view)
-//        }
-//
-//        fun bind(subject: Subject, position: Int) {
-//            this.subject = subject
-//            subjectTextView.text = subject.text
-//            if (selectedSubjectPosition == position) {
-//                // Make selected subject stand out
-//                subjectTextView.setBackgroundColor(Color.RED)
-//            }
-//            else {
-//               // Make the background color dependent on the length of the subject string
-//                val colorIndex = subject.text.length % subjectColors.size
-//                subjectTextView.setBackgroundColor(subjectColors[colorIndex])
-//            }
-//        }
-//
-//        override fun onClick(view: View) {
-//            // Start QuestionActivity with the selected subject
-//            val intent = Intent(this@SubjectActivity, QuestionActivity::class.java)
-//            intent.putExtra(QuestionActivity.EXTRA_SUBJECT_ID, subject!!.id)
-//            intent.putExtra(QuestionActivity.EXTRA_SUBJECT_TEXT, subject!!.text)
-//
-//            startActivity(intent)
-//        }
-//
-//        override fun onLongClick(view: View): Boolean {
-//            if (actionMode != null) {
-//                return false
-//            }
-//
-//            selectedSubject = subject!!
-//            selectedSubjectPosition = adapterPosition
-//
-//            // Re-bind the selected item
-//            subjectAdapter.notifyItemChanged(selectedSubjectPosition)
-//
-//            // Show the CAB
-//            actionMode = this@SubjectActivity.startActionMode(actionModeCallback)
-//            return true
-//        }
-//    }
 private inner class SubjectHolder(inflater: LayoutInflater, parent: ViewGroup?) :
     RecyclerView.ViewHolder(inflater.inflate(R.layout.recycler_view_items, parent, false)),
     View.OnLongClickListener,
@@ -343,25 +283,10 @@ private inner class SubjectHolder(inflater: LayoutInflater, parent: ViewGroup?) 
             startActivity(intent)
             return true
         }
-//        else if (item.itemId == R.id.import_questions) {
-//            intent = Intent(this, ImportActivity::class.java)
-//            startActivity(intent)
-//            return true
-//        }
 
         return super.onOptionsItemSelected(item)
     }
 
-//    override fun onResume() {
-//        super.onResume()
-//
-//        // Retrieve the sort order from the settings
-//        // getSettingsSortOrder() returns a SubjectSortOrder object
-//        val sortOrder = getSettingsSortOrder()
-//
-//        // Set the sort order in the ViewModel
-//       subjectListViewModel.setSortOrder(sortOrder)
-//    }
 
     override fun onResume() {
         super.onResume()
