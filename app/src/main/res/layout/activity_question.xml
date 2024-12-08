@@ -75,8 +75,8 @@
 
             <TextView
                 android:id="@+id/question_text_view"
-                android:layout_width="335dp"
-                android:layout_height="60dp"
+                android:layout_width="333dp"
+                android:layout_height="105dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
@@ -89,38 +89,39 @@
                 app:layout_constraintTop_toBottomOf="@id/question_label_text_view" />
 
             <!-- 显示/隐藏答案按钮 -->
+
+            <!-- 答案标题 -->
             <Button
                 android:id="@+id/answer_button"
-                android:layout_width="123dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="16dp"
+                android:layout_width="149dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="52dp"
                 android:backgroundTint="#E8F8E3"
                 android:text="@string/hide_answer"
                 android:textColor="#0F0000"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.117"
+                app:layout_constraintHorizontal_bias="0.068"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/question_text_view" />
-
-            <!-- 答案标题 -->
-            <Button
-                android:id="@+id/ask_ai_button"
-                android:layout_width="123dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="16dp"
-                android:backgroundTint="#E8F8E3"
-                android:text="Ask AI"
-                android:textColor="#070000"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.611"
-                app:layout_constraintStart_toEndOf="@id/answer_button"
                 app:layout_constraintTop_toBottomOf="@id/question_text_view" />
 
             <!-- 答案标题 -->
 
             <!-- 答案文本 -->
+
+            <Button
+                android:id="@+id/ask_ai_button"
+                android:layout_width="156dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="52dp"
+                android:backgroundTint="#E8F8E3"
+                android:text="Ask AI"
+                android:textColor="#070000"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.627"
+                app:layout_constraintStart_toEndOf="@id/answer_button"
+                app:layout_constraintTop_toBottomOf="@id/question_text_view" />
 
             <TextView
                 android:id="@+id/answer_label_text_view"
@@ -138,7 +139,7 @@
             <TextView
                 android:id="@+id/answer_text_view"
                 android:layout_width="337dp"
-                android:layout_height="67dp"
+                android:layout_height="98dp"
                 android:layout_marginTop="36dp"
                 android:hint="Type your answer here."
                 android:textColor="#000000"
