@@ -1,26 +1,17 @@
 package com.cs407.memora
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.Request
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import okhttp3.OkHttpClient
-import org.json.JSONObject
-import java.io.IOException
-import java.sql.Date
+import com.google.android.material.snackbar.Snackbar
 
 class ChatGptActivity : AppCompatActivity() {
     private lateinit var questionEditText: EditText
@@ -33,6 +24,9 @@ class ChatGptActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chatgpt)
+
+        // Initialize API with any saved key
+        ChatGptApi.init(this)
 
         // Initialize views
         questionEditText = findViewById(R.id.question_edit_text)
@@ -47,23 +41,68 @@ class ChatGptActivity : AppCompatActivity() {
             adapter = chatAdapter
         }
 
+        // Check for API key before allowing chat
+        if (!hasApiKey()) {
+            showApiKeyDialog()
+        }
+
         sendButton.setOnClickListener {
             val question = questionEditText.text.toString().trim()
             if (question.isNotEmpty()) {
-                sendQuestion(question)
+                if (hasApiKey()) {
+                    sendQuestion(question)
+                } else {
+                    showApiKeyDialog()
+                }
             }
         }
+
         // Get the question if it was passed
         intent.getStringExtra("QUESTION")?.let { question ->
             questionEditText.setText(question)
-            // Optionally auto-send the question
-            sendQuestion(question)
+            // Only auto-send if we have an API key
+            if (hasApiKey()) {
+                sendQuestion(question)
+            }
         }
 
         // Enable the back button in the action bar
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
+    }
 
+    private fun hasApiKey(): Boolean {
+        return getSharedPreferences("app_settings", MODE_PRIVATE)
+            .getString("openai_api_key", null) != null
+    }
+
+    private fun showApiKeyDialog() {
+        val input = EditText(this)
+        input.hint = "Enter your OpenAI API key"
+
+        AlertDialog.Builder(this)
+            .setTitle("API Key Required")
+            .setMessage("Please enter your OpenAI API key to use ChatGPT")
+            .setView(input)
+            .setPositiveButton("Save") { _, _ ->
+                val key = input.text.toString().trim()
+                if (key.isNotEmpty()) {
+                    ChatGptApi.saveApiKey(this, key)
+                    Snackbar.make(
+                        findViewById(android.R.id.content),
+                        "API key saved",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                }
+            }
+            .setNegativeButton("Cancel") { _, _ ->
+                // If they cancel and we have no key, finish the activity
+                if (!hasApiKey()) {
+                    finish()
+                }
+            }
+            .setCancelable(false) // Prevent dismissing without choosing
+            .show()
     }
 
     private fun sendQuestion(question: String) {
@@ -96,7 +135,10 @@ class ChatGptActivity : AppCompatActivity() {
                     loadingProgressBar.visibility = View.GONE
                     Snackbar.make(
                         findViewById(android.R.id.content),
-                        R.string.error,
+                        when {
+                            e.message?.contains("API key not set") == true -> "Please set your API key"
+                            else -> getString(R.string.error)
+                        },
                         Snackbar.LENGTH_LONG
                     ).show()
                 }
@@ -110,7 +152,3 @@ class ChatGptActivity : AppCompatActivity() {
         return true
     }
 }
-
-
-
-
