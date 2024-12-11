@@ -10,8 +10,8 @@ android {
 
     defaultConfig {
         applicationId = "com.cs407.memora"
-        minSdk = 33
-        targetSdk = 34
+        minSdk = 30
+        targetSdk = 30
         versionCode = 1
         versionName = "1.0"
 
